@@ -1,6 +1,6 @@
 import requests
 
-url = "https://github-notifications-bot.vercel.app/webhookcallback"
+url = "https://git-not.vercel.app/webhookcallback"
 
 r = requests.post(url)
 print(r.content)
