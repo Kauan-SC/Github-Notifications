@@ -6,11 +6,15 @@ from actions.push import forced, head_commit
 from actions.repository import created as repo_created
 from actions.repository import deleted as repo_deleted
 from actions.repository import edited, renamed
+from verification import verificar_assinatura
 
 app = Flask(__name__)
 
 @app.route("/webhookcallback", methods=["POST"])
 def hook():
+    if not verificar_assinatura(request):
+        return "Assinatura invalida", 403
+
     evento = request.headers.get("X-GitHub-Event")
     dados = request.json
 

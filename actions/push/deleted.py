@@ -6,5 +6,20 @@ def executar(dados):
     ref = dados["ref"]
     autor = dados["pusher"]["name"]
 
-    mensagem = f"🗑️ Branch **{ref}** deletada em **{repo}** por **{autor}**!"
-    notification(mensagem)
+    message_data = {
+    "flags": 32768,
+    "components": [
+        {
+        "type": 17,
+        "components": [
+            {
+            "type": 10,
+            "content": f"🗑️ Branch **{ref}** deletada em **{repo}** por **{autor}**!"
+            }
+        ]
+        }
+    ]
+    }
+
+
+    notification(message_data)

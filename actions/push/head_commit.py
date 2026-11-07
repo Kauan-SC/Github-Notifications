@@ -8,5 +8,38 @@ def executar(dados):
     mensagem_commit = commit["message"]
     commit_id = commit["id"][:7]
 
-    mensagem = f"📝 Novo commit em **{repo}** por **{autor}**:\n`{commit_id}` {mensagem_commit}"
-    notification(mensagem)
+    message_data = {
+    "flags": 32768,
+    "components": [
+        {
+        "type": 17,
+        "components": [
+            {
+            "type": 10,
+            "content": f"📝 Novo commit em **{repo}** por **{autor}**."
+            },
+            {
+            "type": 14,
+            "spacing": 1,
+            "divider": True
+            },
+            {
+            "type": 10,
+            "content": f"ID do commit: {commit_id}"
+            },
+            {
+            "type": 14,
+            "spacing": 1,
+            "divider": True
+            },
+            {
+            "type": 10,
+            "content": f"Mensagem de Commit: {mensagem_commit}"
+            }
+        ]
+        }
+    ]
+    }
+
+
+    notification(message_data)
