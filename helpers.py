@@ -10,7 +10,7 @@ def notification(mensagem):
         "username": "Matte Infos",
     }
 
-    resposta = requests.post(Bot_webhook, json=dados)
+    resposta = requests.post(f"{Bot_webhook}?with_components=true", json=dados)
 
     if resposta.status_code == 204:
         print("Notificação enviada com sucesso!")
